@@ -20,11 +20,13 @@ export default function App() {
 		Note: colorData and nanoid have already been imported into this file! 
 */
 
-	function ColorCard() {
+	function ColorCard({colorValue, index}) {
+		const colorNumber = index + 1
+
 		return (
-			<div className="color-card" style={{ background: "#34568B" }}>
+			<div className="color-card" style={{ background: colorValue }}>
 				<p>
-					<span>1.</span> #34568B
+					<span>{colorNumber}.</span> {colorValue}
 				</p>
 			</div>
 		)
@@ -36,7 +38,9 @@ export default function App() {
 			
 			{/*------Your ColorCard elements below!-----------*/}
 
-				<ColorCard />
+				{colorData.map((color, index) => (
+					<ColorCard colorValue={color} index={index} key={nanoid()} />
+				))}
 			
 			{/*------Your ColorCard elements above!-----------*/}
 			
